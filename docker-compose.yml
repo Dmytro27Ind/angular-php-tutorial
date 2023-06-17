@@ -2,13 +2,15 @@ version: '3.7'
 
 services:
   php-server-app:
-    container_name: angular-php
-    image: angular-php
+    container_name: angular-js-php
+    image: angular-js-php
     build:
       context: ./
       dockerfile: ./Dockerfile
     restart: always
     environment:
-      PORT: ${SERVER_PORT}
+      SERVER_PORT: ${SERVER_PORT}
     ports:
-      - 4200:${SERVER_PORT}
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - "./server:/app/server"     # mounting
